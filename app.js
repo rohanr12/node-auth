@@ -1,5 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var User = require(./models/user);
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/node-auth', { useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
+
 var app = express();
 
 
@@ -19,9 +25,6 @@ app.get('/register', function(req, res){
 });
 
 app.post('/login', function(req, res){
-    console.log(req.body);
-    console.log(req.body.username);
-    console.log(req.body.password);
     res.send('this is the post route');
 })
 
